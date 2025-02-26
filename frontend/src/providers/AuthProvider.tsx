@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Loader } from "lucide-react";
 import { useAuth } from "@clerk/clerk-react";
-import { axiosInstance } from "../src/lib/axios";
+import { axiosInstance } from "../lib/axios";
 
 const updateApiToken = (token: string | null) => {
   if (token) {
@@ -12,7 +12,7 @@ const updateApiToken = (token: string | null) => {
 };
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const { getToken, userId } = useAuth();
+  const { getToken } = useAuth();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,6 +27,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setLoading(false);
       }
     };
+
+    initAuth();
   }, [getToken]);
 
   if (loading)
@@ -36,7 +38,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       </div>
     );
 
-  return <div></div>;
+  return <>{children}</>;
 };
 
 export default AuthProvider;
