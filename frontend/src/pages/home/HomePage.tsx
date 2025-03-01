@@ -1,7 +1,7 @@
 import Topbar from "@/components/Topbar";
 import React from "react";
 
-const Homepages = () => {
+const HomePage = () => {
   return (
     <div>
       <Topbar />
@@ -9,4 +9,4 @@ const Homepages = () => {
   );
 };
 
-export default Homepages;
+export default HomePage;
